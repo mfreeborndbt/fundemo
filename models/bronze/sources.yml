@@ -1,0 +1,106 @@
+version: 2
+
+sources:
+  - name: snowflake_sample_data
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: customer
+        description: "Customer table from TPCH_SF1 schema"
+        columns:
+          - name: C_CUSTKEY
+            description: "Primary key of the customer"
+          - name: C_NAME
+            description: "Name of the customer"
+          - name: C_ADDRESS
+            description: "Address of the customer"
+          - name: C_NATIONKEY
+            description: "Nation key of the customer"
+          - name: C_PHONE
+            description: "Phone number of the customer"
+          - name: C_ACCTBAL
+            description: "Account balance of the customer"
+          - name: C_MKTSEGMENT
+            description: "Market segment of the customer"
+          - name: C_COMMENT
+            description: "Comment related to the customer"
+
+      - name: lineitem
+        description: "Line item table from TPCH_SF1 schema"
+        columns:
+          - name: L_ORDERKEY
+            description: "Order key"
+          - name: L_PARTKEY
+            description: "Part key"
+          - name: L_SUPPKEY
+            description: "Supplier key"
+          - name: L_LINENUMBER
+            description: "Line number"
+          - name: L_QUANTITY
+            description: "Quantity"
+          - name: L_EXTENDEDPRICE
+            description: "Extended price"
+          - name: L_DISCOUNT
+            description: "Discount"
+          - name: L_TAX
+            description: "Tax"
+          - name: L_RETURNFLAG
+            description: "Return flag"
+          - name: L_LINESTATUS
+            description: "Line status"
+          - name: L_SHIPDATE
+            description: "Ship date"
+          - name: L_COMMITDATE
+            description: "Commit date"
+          - name: L_RECEIPTDATE
+            description: "Receipt date"
+          - name: L_SHIPINSTRUCT
+            description: "Shipping instructions"
+          - name: L_SHIPMODE
+            description: "Shipping mode"
+          - name: L_COMMENT
+            description: "Comment related to the line item"
+
+      - name: nation
+        description: "Nation table from TPCH_SF1 schema"
+        columns:
+          - name: N_NATIONKEY
+            description: "Primary key of the nation"
+          - name: N_NAME
+            description: "Name of the nation"
+          - name: N_REGIONKEY
+            description: "Region key of the nation"
+          - name: N_COMMENT
+            description: "Comment related to the nation"
+
+      - name: orders
+        description: "Orders table from TPCH_SF1 schema"
+        columns:
+          - name: O_ORDERKEY
+            description: "Primary key of the order"
+          - name: O_CUSTKEY
+            description: "Customer key of the order"
+          - name: O_ORDERSTATUS
+            description: "Order status"
+          - name: O_TOTALPRICE
+            description: "Total price of the order"
+          - name: O_ORDERDATE
+            description: "Order date"
+          - name: O_ORDERPRIORITY
+            description: "Order priority"
+          - name: O_CLERK
+            description: "Clerk"
+          - name: O_SHIPPRIORITY
+            description: "Shipping priority"
+          - name: O_COMMENT
+            description: "Comment related to the order"
+
+      - name: region
+        description: "Region table from TPCH_SF1 schema"
+        columns:
+          - name: R_REGIONKEY
+            description: "Primary key of the region"
+          - name: R_NAME
+            description: "Name of the region"
+          - name: R_COMMENT
+            description: "Comment related to the region"
