@@ -1,0 +1,211 @@
+models:
+  - name: dim_customer
+    description: This model enriches customer details by pulling in relevant geographic data, providing a comprehensive view of customer information along with their associated nation and region.
+    columns:
+      - name: custkey
+        description: Unique identifier for the customer.
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: Full name of the customer.
+        tests:
+          - not_null
+      - name: address
+        description: Address of the customer.
+      - name: phone
+        description: Phone number of the customer.
+      - name: acctbal
+        description: Account balance of the customer.
+      - name: mktsegment
+        description: Market segment to which the customer belongs.
+      - name: nation_name
+        description: Name of the nation associated with the customer.
+        tests:
+          - not_null
+      - name: region_name
+        description: Name of the region associated with the customer.
+        tests:
+          - not_null
+
+  - name: fact_order_customer
+    description: This model combines order line items with detailed customer information, providing a comprehensive view of each order and its associated customer.
+    columns:
+      - name: orderkey
+        description: The unique identifier for the order.
+        tests:
+          - not_null
+      - name: custkey
+        description: The unique identifier for the customer.
+        tests:
+          - not_null
+      - name: orderstatus
+        description: The current status of the order.
+        tests:
+          - not_null
+      - name: totalprice
+        description: The total price of the order.
+        tests:
+          - not_null
+      - name: orderdate
+        description: The date when the order was placed.
+        tests:
+          - not_null
+      - name: orderpriority
+        description: The priority level of the order.
+        tests:
+          - not_null
+      - name: clerk
+        description: The clerk who processed the order.
+        tests:
+          - not_null
+      - name: shippriority
+        description: The priority level for shipping the order.
+        tests:
+          - not_null
+      - name: partkey
+        description: The unique identifier for the part involved in the order line item.
+        tests:
+          - not_null
+      - name: suppkey
+        description: The unique identifier for the supplier of the part.
+        tests:
+          - not_null
+      - name: linenumber
+        description: The line number within the order.
+        tests:
+          - not_null
+      - name: quantity
+        description: The quantity of the part ordered.
+        tests:
+          - not_null
+      - name: extendedprice
+        description: The extended price of the part, based on the quantity ordered.
+        tests:
+          - not_null
+      - name: discount
+        description: The discount applied to the order line item.
+        tests:
+          - not_null
+      - name: tax
+        description: The tax applied to the order line item.
+        tests:
+          - not_null
+      - name: returnflag
+        description: The flag indicating whether the order line item was returned.
+        tests:
+          - not_null
+      - name: linestatus
+        description: The status of the order line item.
+        tests:
+          - not_null
+      - name: shipdate
+        description: The date when the order line item was shipped.
+        tests:
+          - not_null
+      - name: commitdate
+        description: The date when the order was committed.
+        tests:
+          - not_null
+      - name: receiptdate
+        description: The date when the order line item was received.
+        tests:
+          - not_null
+      - name: shipinstruct
+        description: The shipping instructions for the order.
+      - name: shipmode
+        description: The mode of shipping used for the order.
+      - name: customer_name
+        description: The name of the customer.
+      - name: address
+        description: The address of the customer.
+      - name: phone
+        description: The phone number of the customer.
+      - name: acctbal
+        description: The account balance of the customer.
+      - name: mktsegment
+        description: The market segment to which the customer belongs.
+      - name: nation_name
+        description: The name of the nation where the customer resides.
+      - name: region_name
+        description: The name of the region where the customer resides.
+
+  - name: fact_order_lineitems
+    description: This model consolidates data from orders and lineitems to provide a comprehensive view of the details associated with each order and its line items.
+    columns:
+      - name: orderkey
+        description: A unique identifier for the order.
+        tests:
+          - not_null
+      - name: custkey
+        description: A unique identifier for the customer who placed the order.
+        tests:
+          - not_null
+      - name: orderstatus
+        description: The current status of the order (e.g., shipped, pending, delivered).
+        tests:
+          - not_null
+      - name: totalprice
+        description: The total price of the order.
+        tests:
+          - not_null
+      - name: orderdate
+        description: The date the order was placed.
+        tests:
+          - not_null
+      - name: orderpriority
+        description: The priority level of the order.
+        tests:
+          - not_null
+      - name: clerk
+        description: The clerk processing the order.
+        tests:
+          - not_null
+      - name: shippriority
+        description: The priority level for shipping the order.
+      - name: partkey
+        description: A unique identifier for the part included in the line item.
+        tests:
+          - not_null
+      - name: suppkey
+        description: A unique identifier for the supplier providing the part.
+        tests:
+          - not_null
+      - name: linenumber
+        description: The line number of the item in the order.
+        tests:
+          - not_null
+      - name: quantity
+        description: The quantity of the item ordered.
+        tests:
+          - not_null
+      - name: extendedprice
+        description: The extended price of the line item after multiplying the unit price by the quantity.
+        tests:
+          - not_null
+      - name: discount
+        description: The discount applied to the line item.
+      - name: tax
+        description: The tax amount applied to the line item.
+      - name: returnflag
+        description: The return status of the line item (e.g., returned, not returned).
+        tests:
+          - not_null
+      - name: linestatus
+        description: The status of the line item (e.g., pending, completed).
+        tests:
+          - not_null
+      - name: shipdate
+        description: The date the item was shipped.
+        tests:
+          - not_null
+      - name: commitdate
+        description: The date the item was committed.
+      - name: receiptdate
+        description: The date the item was received by the customer.
+        tests:
+          - not_null
+      - name: shipinstruct
+        description: Special shipping instructions for delivering the item.
+      - name: shipmode
+        description: The mode of shipping used for the item (e.g., air, ground).
