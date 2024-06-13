@@ -1,0 +1,183 @@
+models: 
+  - name: stg_customer
+    description: This model provides a staging layer for customer data, sourcing the data from the 'customer' table in the 'snowflake_sample_data' dataset. It offers essential customer details like identification, contact information, financial balance, market segment, and additional comments.
+    columns:
+      - name: custkey
+        description: The unique identifier for each customer.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: The name of the customer.
+        tests:
+          - not_null
+      - name: address
+        description: The address of the customer.
+        tests:
+          - not_null
+      - name: nationkey
+        description: The identifier for the nation associated with the customer.
+        tests:
+          - not_null
+      - name: phone
+        description: The phone number of the customer.
+      - name: acctbal
+        description: The account balance of the customer.
+      - name: mktsegment
+        description: The market segment the customer belongs to.
+      - name: comment
+        description: Any additional comments or information about the customer.
+
+  - name: stg_lineitem
+    description: This model stages the line item data from the snowflake_sample_data source for further transformations and analysis.
+    columns:
+      - name: orderkey
+        description: Unique identifier for the order.
+        tests:
+          - not_null
+
+      - name: partkey
+        description: Unique identifier for the part in the order.
+        tests:
+          - not_null
+
+      - name: suppkey
+        description: Unique identifier for the supplier of the part.
+        tests:
+          - not_null
+
+      - name: linenumber
+        description: The line number of the item in the order.
+        tests:
+          - not_null
+
+      - name: quantity
+        description: The quantity of parts ordered.
+        tests:
+          - not_null
+
+      - name: extendedprice
+        description: The extended price for the line item after multiplication by quantity.
+        tests:
+          - not_null
+
+      - name: discount
+        description: The discount applied to the line item.
+        tests:
+          - not_null
+
+      - name: tax
+        description: The tax applied to the line item.
+        tests:
+          - not_null
+
+      - name: returnflag
+        description: Indicator if the item was returned.
+        tests:
+          - not_null
+
+      - name: linestatus
+        description: The status of the line item.
+        tests:
+          - not_null
+
+      - name: shipdate
+        description: The date the item was shipped.
+        tests:
+          - not_null
+
+      - name: commitdate
+        description: The date when the item is committed to the order.
+        tests:
+          - not_null
+
+      - name: receiptdate
+        description: The date the item was received.
+        tests:
+          - not_null
+
+      - name: shipinstruct
+        description: Shipping instructions for the item.
+        tests:
+          - not_null
+
+      - name: shipmode
+        description: The mode of shipment used.
+        tests:
+          - not_null
+
+      - name: comment
+        description: Additional comments regarding the line item.
+        tests:
+          - not_null
+
+  - name: stg_nation
+    description: This model extracts nation data from the snowflake sample data. It includes information about each nation, such as its key, name, associated region key, and comments.
+    columns:
+      - name: nationkey
+        description: A unique identifier for each nation.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: The name of the nation.
+        tests:
+          - not_null
+      - name: regionkey
+        description: A unique identifier for the region to which the nation belongs.
+        tests:
+          - not_null
+      - name: comment
+        description: Additional comments or descriptions related to the nation.
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: This model stages the orders data from the Snowflake sample data. It includes important details about each order, such as the customer who placed the order, the order status, pricing, order date, priority, and other relevant information. This staging model serves as a foundational dataset for further transformations and analyses.
+    columns:
+      - name: orderkey
+        description: A unique identifier for each order.
+        tests:
+          - unique
+          - not_null
+      - name: custkey
+        description: A unique identifier for the customer who placed the order.
+        tests:
+          - not_null
+      - name: orderstatus
+        description: The status of the order (e.g., pending, shipped, completed).
+        tests:
+          - not_null
+      - name: totalprice
+        description: The total price of the order.
+        tests:
+          - not_null
+      - name: orderdate
+        description: The date when the order was placed.
+        tests:
+          - not_null
+      - name: orderpriority
+        description: The priority level of the order (e.g., high, medium, low).
+        tests:
+          - not_null
+      - name: clerk
+        description: The name or identifier of the clerk who processed the order.
+      - name: shippriority
+        description: The shipping priority of the order.
+      - name: comment
+        description: Additional comments or notes about the order.
+
+  - name: stg_region
+    description: This model extracts and transforms region data from the Snowflake sample data for further analysis.
+    columns:
+      - name: regionkey
+        description: Unique identifier for the region.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: Name of the region.
+        tests:
+          - not_null
+      - name: comment
+        description: Comments or additional details about the region.

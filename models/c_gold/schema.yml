@@ -1,0 +1,28 @@
+models:
+  - name: agg_order_revenue
+    description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation.
+    columns:
+      - name: year
+        description: The year in which the orders were placed.
+        tests:
+          - not_null
+      - name: returnflag
+        description: Indicates if the order was returned.
+        tests:
+          - not_null
+      - name: shipmode
+        description: The mode of shipment for the orders.
+        tests:
+          - not_null
+      - name: region_name
+        description: The name of the region where the order originated.
+        tests:
+          - not_null
+      - name: nation_name
+        description: The name of the nation where the order originated.
+        tests:
+          - not_null
+      - name: total_revenue
+        description: The total revenue from customer orders for the specified year, returnflag, shipmode, region, and nation.
+        tests:
+          - not_null
