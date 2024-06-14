@@ -11,7 +11,7 @@ models:
         tests:
           - not_null
       - name: shipmode
-        description: The mode of shipment for the orders.
+        description: The mode of shipment for the orders. "{{doc('shipping_mode')}}"
         tests:
           - not_null
       - name: region_name
