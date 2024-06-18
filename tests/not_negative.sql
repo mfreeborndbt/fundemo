@@ -1,4 +1,6 @@
-{% test not_negative (model,column_name) %}
+-- tests/not_negative.sql
+
+{% test not_negative(model, column_name) %}
 
 select count(*)
 from {{ model }}
