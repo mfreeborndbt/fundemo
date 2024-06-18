@@ -26,3 +26,4 @@ models:
         description: The total revenue from customer orders for the specified year, returnflag, shipmode, region, and nation.
         tests:
           - not_null
+          - not_negative
