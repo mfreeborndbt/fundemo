@@ -13,6 +13,7 @@ with
             partkey,
             suppkey,
             linenumber,
+            revenue,
             quantity,
             extendedprice,
             discount,
@@ -24,7 +25,7 @@ with
             receiptdate,
             shipinstruct,
             shipmode
-        from {{ ref("fact_order_lineitems") }}
+        from {{ ref("fct_order_lineitems") }}
 
     ),
 
@@ -57,6 +58,7 @@ select
     ol.linenumber,
     ol.quantity,
     ol.extendedprice,
+    ol.revenue,
     ol.discount,
     ol.tax,
     ol.returnflag,
