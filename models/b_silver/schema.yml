@@ -1,6 +1,9 @@
+version: 2
+
 models:
   - name: dim_customer
     description: This model enriches customer details by pulling in relevant geographic data, providing a comprehensive view of customer information along with their associated nation and region.
+    
     columns:
       - name: custkey
         description: Unique identifier for the customer.
@@ -28,7 +31,7 @@ models:
         tests:
           - not_null
 
-  - name: fact_order_customer
+  - name: fct_order_customer
     description: This model combines order line items with detailed customer information, providing a comprehensive view of each order and its associated customer.
     columns:
       - name: orderkey
@@ -87,6 +90,10 @@ models:
         description: The discount applied to the order line item.
         tests:
           - not_null
+      - name: revenue
+        description: The extended price accounting for any discounts applied.
+        tests:
+          - not_null
       - name: tax
         description: The tax applied to the order line item.
         tests:
@@ -130,8 +137,13 @@ models:
       - name: region_name
         description: The name of the region where the customer resides.
 
-  - name: fact_order_lineitems
+  - name: fct_order_lineitems
     description: This model consolidates data from orders and lineitems to provide a comprehensive view of the details associated with each order and its line items.
+    tests:
+      - dbt_expectations.expect_table_aggregation_to_equal_other_table:
+          expression: sum(revenue)
+          compare_model: ref('fct_order_customer')
+          group_by: [orderkey]
     columns:
       - name: orderkey
         description: A unique identifier for the order.
@@ -185,8 +197,14 @@ models:
           - not_null
       - name: discount
         description: The discount applied to the line item.
+      - name: revenue
+        description: The extended price accounting for any discounts applied.
+        tests:
+          - not_null
       - name: tax
         description: The tax amount applied to the line item.
+        tests:
+          - not_null
       - name: returnflag
         description: The return status of the line item (e.g., returned, not returned).
         tests:

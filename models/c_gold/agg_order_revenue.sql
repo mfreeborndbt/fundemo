@@ -33,8 +33,8 @@ with
             mktsegment,
             nation_name,
             region_name,
-            (extendedprice * quantity) as revenue
-        from {{ ref("fact_order_customer") }}
+            revenue
+        from {{ ref("fct_order_customer") }}
 
     ),
 
