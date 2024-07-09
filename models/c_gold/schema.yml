@@ -1,5 +1,6 @@
 models:
   - name: agg_order_revenue
+    access: public
     description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation.
     columns:
       - name: year
