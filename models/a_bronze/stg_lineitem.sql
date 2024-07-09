@@ -8,6 +8,7 @@ with
             l_linenumber as linenumber,
             l_quantity as quantity,
             l_extendedprice as extendedprice,
+            l_extendedprice - (extendedprice * l_discount) as revenue,
             l_discount as discount,
             l_tax as tax,
             l_returnflag as returnflag,
