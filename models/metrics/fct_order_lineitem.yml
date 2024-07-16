@@ -1,5 +1,5 @@
 semantic_models:
-  - name: order_lineitems 
+  - name: order_lineitems
     defaults:
       agg_time_dimension: order_date
     description: |
@@ -7,13 +7,13 @@ semantic_models:
     model: ref('fct_order_lineitems')
 
     entities:
-      - name: order_lineitem_id 
+      - name: order_lineitem_id
         type: primary
         expr: orderkey || '|' || linenumber
       - name: customer_key
         type: foreign
 
-    dimensions:   
+    dimensions:
       - name: order_date
         type: time
         type_params:
@@ -25,32 +25,34 @@ semantic_models:
       - name: shipmode
         type: categorical
 
-    measures:   
+    measures:
       - name: order_total
-        description: The total revenue for each line item.
+        description: "The total revenue for each line item."
         agg: sum
         expr: revenue
+        create_metric: true
       - name: line_item_quantity
-        description: The quantity of product for each line item
+        description: "The quantity of product for each line item."
         agg: sum
         expr: quantity
+        create_metric: true
 
 metrics:
   - name: total_revenue_non_returned
-    description: Total revenue for non-returned items.
+    description: "Total revenue for non-returned items."
     type: simple
     label: "Actual Revenue"
     type_params:
-      measure: 
+      measure:
         name: order_total
-    filter: "{{ Dimension('returnflag') }} = 0"
+    filter: "{{ Dimension('order_lineitems__returnflag') }} = 0"
 
   - name: revenue_per_item
-    description: Revenue per item.
-    type: ratio
+    description: "Revenue per item."
     label: "Revenue Per Item"
+    type: ratio
     type_params:
-      numerator: 
+      numerator:
         name: order_total
-      denominator: 
+      denominator:
         name: line_item_quantity
