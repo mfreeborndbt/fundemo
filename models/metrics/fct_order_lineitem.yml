@@ -45,7 +45,7 @@ metrics:
     type_params:
       measure:
         name: order_total
-    filter: "{{ Dimension('order_lineitems__returnflag') }} = 0"
+    filter: "{{ Dimension('order_lineitems__returnflag') }} = N"
 
   - name: revenue_per_item
     description: "Revenue per item."
