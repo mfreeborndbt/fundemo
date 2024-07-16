@@ -45,3 +45,18 @@ models:
           - unique_nation_region:
               config:
                 store_failures: true  # store failures for this test
+
+exposures:
+
+  - name: revenue_kpi_dashboard
+    label: Revenue KPIs
+    type: dashboard
+    maturity: high
+    url: https://us-east-1.online.tableau.com/#/site/milesfreebornf07f3e392b/views/RevenueAnalysis/Dashboard1?:iid=3
+    description: A Tableau dashboard showing revenue by return method, 
+
+    depends_on:
+      - ref('agg_order_revenue')
+    owner:
+      name: Miles Freeborn
+      email: miles.freeborn@dbtlabs.com
