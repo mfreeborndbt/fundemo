@@ -1,0 +1,36 @@
+semantic_models:
+  - name: order_lineitems 
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order line item fact table. This table’s grain is one row per line item within an order.
+    model: ref('fct_order_lineitems')
+
+    entities:
+      - name: order_lineitem_id 
+        type: primary
+        expr: orderkey || '|' || linenumber
+      - name: customer_key
+        type: foreign
+
+    dimensions:   
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: month
+      - name: orderpriority
+        type: categorical
+      - name: returnflag
+        type: categorical
+      - name: shipmode
+        type: categorical
+
+    measures:   
+      - name: order_total
+        description: The total revenue for each line item.
+        agg: sum
+        expr: revenue
+      - name: line_item_quatity
+        description: The quantity of product for each line item
+        agg: sum
+        expr: quantity

@@ -1,10 +1,14 @@
 models:
   - name: agg_order_revenue
     access: public
+    config:
+      contract:
+        enforced: true
     description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation.
     columns:
       - name: year
         description: The year in which the orders were placed.
+        data_type: int
         tests:
           - not_null
           - valid_year_range:
@@ -12,22 +16,27 @@ models:
               end_year: 1999
       - name: returnflag
         description: Indicates if the order was returned.
+        data_type: string
         tests:
           - not_null
       - name: shipmode
         description: The mode of shipment for the orders. "{{doc('shipping_mode')}}"
+        data_type: string
         tests:
           - not_null
       - name: region_name
         description: The name of the region where the order originated.
+        data_type: string
         tests:
           - not_null
       - name: nation_name
         description: The name of the nation where the order originated.
+        data_type: string
         tests:
           - not_null
       - name: total_revenue
         description: The total revenue from customer orders for the specified year, returnflag, shipmode, region, and nation.
+        data_type: int
         tests:
           - not_null
           - non_negative:
