@@ -30,7 +30,27 @@ semantic_models:
         description: The total revenue for each line item.
         agg: sum
         expr: revenue
-      - name: line_item_quatity
+      - name: line_item_quantity
         description: The quantity of product for each line item
         agg: sum
         expr: quantity
+
+metrics:
+  - name: total_revenue_non_returned
+    description: Total revenue for non-returned items.
+    type: simple
+    label: "Actual Revenue"
+    type_params:
+      measure: 
+        name: order_total
+    filter: "{{ Dimension('returnflag') }} = 0"
+
+  - name: revenue_per_item
+    description: Revenue per item.
+    type: ratio
+    label: "Revenue Per Item"
+    type_params:
+      numerator: 
+        name: order_total
+      denominator: 
+        name: line_item_quantity
