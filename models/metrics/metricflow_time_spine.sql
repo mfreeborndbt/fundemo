@@ -1,7 +1,6 @@
 {{
    config(
-       materialized = 'table',
-       docs = {'show': false}
+       materialized = 'table'
    )
 }}
 with days as (
