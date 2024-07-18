@@ -1,3 +1,5 @@
+version: 2
+
 semantic_models:
   - name: order_lineitems
     defaults:
@@ -45,36 +47,4 @@ metrics:
     type_params:
       measure:
         name: order_total
-    filter: "{{ Dimension('order_lineitems__returnflag') }} = N"
-
-  - name: revenue_per_item
-    description: "Revenue per item."
-    label: "Revenue Per Item"
-    type: ratio
-    type_params:
-      numerator:
-        name: order_total
-      denominator:
-        name: line_item_quantity
-
-saved_queries:
-  - name: simple_saved_query
-    description: "A simple saved query example."
-    label: Simple Saved Query
-    config:
-      cache:
-        enabled: true
-    query_params:
-      metrics:
-        - total_revenue_non_returned
-      group_by:
-        - "Dimension('order_lineitems__order_date')"
-      where:
-        - "{{ Dimension('order_lineitems__order_date', 'MONTH') }} <= now()"
-        - "{{ Dimension('order_lineitems__order_date', 'MONTH') }} >= '2023-01-01'"
-    exports:
-      - name: simple_export
-        config:
-          alias: simple_export_alias
-          export_as: table
-          schema: simple_export_schema_name
+    filter: "{{ Dimension('order_lineitems__returnflag') }} = 'N'"
