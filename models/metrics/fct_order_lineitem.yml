@@ -45,19 +45,9 @@ metrics:
     type: simple
     label: "Actual Revenue"
     type_params:
-      measure: 
+      measure:
         name: order_total
     filter: "{{ Dimension('order_lineitems__returnflag') }} = 'N'"
-
-  - name: revenue_per_item
-    description: "Revenue per item."
-    label: "Revenue Per Item"
-    type: ratio
-    type_params: 
-      numerator: 
-        name: order_total
-      denominator: 
-        name: line_item_quantity
 
 saved_queries:
   - name: simple_saved_query
