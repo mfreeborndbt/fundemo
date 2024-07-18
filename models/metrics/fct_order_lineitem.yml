@@ -70,10 +70,7 @@ saved_queries:
       metrics:
         - total_revenue_non_returned
       group_by:
-        - "Dimension('order_lineitems__order_date')"
-      where:
-        - "{{ Dimension('order_lineitems__order_date', 'MONTH') }} <= now()"
-        - "{{ Dimension('order_lineitems__order_date', 'MONTH') }} >= '2023-01-01'"
+        - "Dimension('order_lineitems__shipmode')"
     exports:
       - name: simple_export
         config:
