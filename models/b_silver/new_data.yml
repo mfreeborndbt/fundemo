@@ -1,0 +1,9 @@
+models:
+  - name: new_data
+    description: The purpose of this model is to aggregate revenue by different shipping modes to analyze the distribution of revenue across various shipping methods.
+    columns:
+      - name: shipmode
+        description: The shipping mode used for the orders.
+
+      - name: sum_revenue
+        description: The total revenue generated for each shipping mode, calculated by summing the revenue of orders associated with that shipping mode.
