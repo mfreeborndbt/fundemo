@@ -4,7 +4,7 @@ with
         select
             n_nationkey as nationkey,
             n_name as name,
-            n_regionkey as regionkey,
+            n_regionkey as regionkey1,
             n_comment as comment
 
         from {{ source("snowflake_sample_data", "nation") }}
