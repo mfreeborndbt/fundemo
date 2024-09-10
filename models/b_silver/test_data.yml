@@ -1,0 +1,9 @@
+models: 
+  - name: test_data
+    description: The purpose of this model is to summarize revenue by shipping mode.
+    columns:
+      - name: shipmode
+        description: The mode of shipment used for the orders.
+
+      - name: ship_mode_rev
+        description: The total revenue generated for each shipping mode.
