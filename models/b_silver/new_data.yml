@@ -4,6 +4,9 @@ models:
     columns:
       - name: shipmode
         description: The shipping mode used for the orders.
-
-      - name: sum_revenue
+        tests:
+          - not_null
+      - name: sm_rev
         description: The total revenue generated for each shipping mode, calculated by summing the revenue of orders associated with that shipping mode.
+        tests:
+          - not_null
