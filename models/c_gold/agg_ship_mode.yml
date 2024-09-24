@@ -1,0 +1,12 @@
+models:
+  - name: agg_ship_mode
+    description: This model aggregates the revenue by shipping mode.
+    columns:
+      - name: shipmode
+        description: The mode of shipping used for the orders.
+        tests:
+          - not_null
+      - name: ship_rev
+        description: The total revenue generated for each shipping mode.
+        tests:
+          - not_null
