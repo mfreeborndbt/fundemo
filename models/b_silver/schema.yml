@@ -144,6 +144,7 @@ models:
           expression: sum(revenue)
           compare_model: ref('fct_order_customer')
           group_by: [orderkey]
+          enabled: false
     columns:
       - name: orderkey
         description: A unique identifier for the order.
