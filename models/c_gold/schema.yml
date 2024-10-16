@@ -62,7 +62,7 @@ models:
         assertions:
           year_before_1998:
             description: "Year should be before 1998."
-            expression: "YEAR <= 1998"
+            expression: "YEAR < 1998"
       - name: returnflag
         description: Indicates if the order was returned.
         data_type: string
