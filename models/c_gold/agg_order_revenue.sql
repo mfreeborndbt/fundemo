@@ -59,7 +59,7 @@ with
             shipmode,
             region_name,
             nation_name,
-            sum(revenue)*1.2 as total_revenue
+            sum(revenue) as total_revenue
         from revenue_data
         group by year, returnflag, shipmode, region_name, nation_name
 
