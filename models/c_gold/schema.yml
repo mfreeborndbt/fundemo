@@ -1,19 +1,21 @@
 models:
-  - name: agg_order_revenue
+  - name: agg_order_revenue_test
     access: public
     config:
       contract:
-        enforced: true
-    description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation.
+        enforced: false
+    description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation without using assertions.
     columns:
-      - name: year
+      - name: YEAR
         description: The year in which the orders were placed.
         data_type: int
         tests:
           - not_null
           - valid_year_range:
               start_year: 1990
-              end_year: 1999
+              end_year: 1997
+              config:
+                store_failures: true
       - name: returnflag
         description: Indicates if the order was returned.
         data_type: string
@@ -41,10 +43,57 @@ models:
           - not_null
           - non_negative:
               config:
-                store_failures: true  # store failures for this test
+                store_failures: true
           - unique_nation_region:
               config:
-                store_failures: true  # store failures for this test
+                store_failures: true
+
+  - name: agg_order_revenue_assert
+    access: public
+    config:
+      contract:
+        enforced: false
+    description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation and applies assertions to filter data before the year 1996.
+    columns:
+      - name: YEAR
+        description: The year in which the orders were placed.
+        data_type: int
+      - name: exceptions
+        assertions:
+          year_before_1998:
+            description: "Year should be before 1998."
+            expression: "YEAR <= 1998"
+      - name: returnflag
+        description: Indicates if the order was returned.
+        data_type: string
+        tests:
+          - not_null
+      - name: shipmode
+        description: The mode of shipment for the orders. "{{doc('shipping_mode')}}"
+        data_type: string
+        tests:
+          - not_null
+      - name: region_name
+        description: The name of the region where the order originated.
+        data_type: string
+        tests:
+          - not_null
+      - name: nation_name
+        description: The name of the nation where the order originated.
+        data_type: string
+        tests:
+          - not_null
+      - name: total_revenue
+        description: The total revenue from customer orders for the specified year, returnflag, shipmode, region, and nation.
+        data_type: int
+        tests:
+          - not_null
+          - non_negative:
+              config:
+                store_failures: true
+          - unique_nation_region:
+              config:
+                store_failures: true
 
 exposures:
 
@@ -56,7 +105,7 @@ exposures:
     description: A Tableau dashboard showing revenue by return method, 
 
     depends_on:
-      - ref('agg_order_revenue')
+      - ref('agg_order_revenue_assert')
     owner:
       name: Miles Freeborn
       email: miles.freeborn@dbtlabs.com
