@@ -5,6 +5,14 @@ models:
       contract:
         enforced: false
     description: This model aggregates revenue data from customer orders by year, returnflag, shipmode, region, and nation without using assertions.
+    tests:
+    - dbt_expectations.expect_table_aggregation_to_equal_other_table:
+        expression: sum(total_revenue)
+        compare_model: ref("fct_order_customer")
+        compare_expression: sum(revenue)
+        group_by: [shipmode]
+        compare_group_by: [shipmode]
+        
     columns:
       - name: YEAR
         description: The year in which the orders were placed.
