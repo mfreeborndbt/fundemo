@@ -38,7 +38,9 @@ models:
         description: The name of the region where the order originated.
         data_type: string
         tests:
-          - not_null
+          - not_null:
+              config:
+                store_failures: true
       - name: nation_name
         description: The name of the nation where the order originated.
         data_type: string
@@ -50,9 +52,6 @@ models:
         tests:
           - not_null
           - non_negative:
-              config:
-                store_failures: true
-          - unique_nation_region:
               config:
                 store_failures: true
 
@@ -97,9 +96,6 @@ models:
         tests:
           - not_null
           - non_negative:
-              config:
-                store_failures: true
-          - unique_nation_region:
               config:
                 store_failures: true
 

@@ -57,7 +57,7 @@ with
             year,
             returnflag,
             shipmode,
-            region_name as region,
+            region_name,
             nation_name,
             sum(revenue) as total_revenue
         from revenue_data
