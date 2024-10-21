@@ -9,7 +9,7 @@ sources:
       - name: customer
         description: "Customer table from TPCH_SF1 schema"
         freshness:
-          warn_after: {count: 365, period: day}
+          warn_after: {count: 700, period: day}
           error_after: {count: 1825, period: day}
         columns:
           - name: C_CUSTKEY
@@ -32,7 +32,7 @@ sources:
       - name: lineitem
         description: "Line item table from TPCH_SF1 schema"
         freshness:
-          warn_after: {count: 365, period: day}
+          warn_after: {count: 700, period: day}
           error_after: {count: 1825, period: day}
         columns:
           - name: L_ORDERKEY
@@ -71,7 +71,7 @@ sources:
       - name: nation
         description: "Nation table from TPCH_SF1 schema"
         freshness:
-          warn_after: {count: 365, period: day}
+          warn_after: {count: 700, period: day}
           error_after: {count: 1825, period: day}
         columns:
           - name: N_NATIONKEY
@@ -86,7 +86,7 @@ sources:
       - name: orders
         description: "Orders table from TPCH_SF1 schema"
         freshness:
-          warn_after: {count: 365, period: day}
+          warn_after: {count: 700, period: day}
           error_after: {count: 1825, period: day}
         columns:
           - name: O_ORDERKEY
@@ -111,7 +111,7 @@ sources:
       - name: region
         description: "Region table from TPCH_SF1 schema"
         freshness:
-          warn_after: {count: 365, period: day}
+          warn_after: {count: 700, period: day}
           error_after: {count: 1825, period: day}
         columns:
           - name: R_REGIONKEY
