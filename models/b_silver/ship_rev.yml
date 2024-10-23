@@ -1,0 +1,12 @@
+models:
+  - name: ship_rev
+    description: This model calculates the total revenue generated from shipping activities, grouped by the mode of shipment. It provides insights into the revenue contribution of different shipping methods.
+    columns:
+      - name: shipmode
+        description: The mode of shipment used for the order, such as air, sea, or land.
+        tests:
+          - not_null
+      - name: shipping_rev
+        description: The total revenue generated from shipping activities for each mode of shipment.
+        tests:
+          - not_null
