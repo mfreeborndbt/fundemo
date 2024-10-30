@@ -1,0 +1,12 @@
+models:
+  - name: cust_balance
+    description: This model calculates the total balance for each customer by summing up their account balances from the dim_customer table.
+    columns:
+      - name: customer_name
+        description: The name of the customer whose balance is being calculated.
+        tests:
+          - not_null
+      - name: customer_balance
+        description: The total account balance for the customer, aggregated from the dim_customer table.
+        tests:
+          - not_null
