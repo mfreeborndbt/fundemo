@@ -27,6 +27,7 @@ select
     c.address,
     c.phone,
     c.acctbal,
+    c.acctbal*1.1 acctbal_euro,
     c.mktsegment,
     n.nation_name,
     r.region_name
