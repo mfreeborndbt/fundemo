@@ -1,0 +1,12 @@
+models:
+  - name: ship_rev
+    description: The purpose of this model is to calculate the total revenue generated for each shipping mode. It aggregates revenue data from the 'fct_order_customer' table, providing insights into revenue distribution across different shipping methods.
+    columns:
+      - name: shipmode
+        description: The mode of shipping used for the orders, such as air, sea, or land.
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: The total revenue generated for each shipping mode, calculated by summing up the revenue from all orders associated with that mode.
+        data_tests:
+          - not_null
