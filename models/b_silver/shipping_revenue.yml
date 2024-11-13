@@ -1,0 +1,12 @@
+models:
+  - name: shipping_revenue
+    description: This model calculates the total revenue generated for each shipping mode, providing insights into which shipping methods are most profitable.
+    columns:
+      - name: shipmode
+        description: The mode of shipping used for the orders, such as air, ground, or sea.
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: The total revenue generated from orders for each shipping mode, calculated by summing up the revenue for each mode.
+        data_tests:
+          - not_null

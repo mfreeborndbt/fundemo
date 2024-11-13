@@ -5,3 +5,5 @@ FROM
     {{ ref('fct_order_customer') }}
 GROUP BY 
     shipmode
+ORDER BY 
+    ROUND(total_revenue) DESC
