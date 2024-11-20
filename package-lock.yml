@@ -9,6 +9,8 @@ packages:
     version: 0.12.1
   - package: AxelThevenot/dbt_assertions
     version: 1.2.0
+  - package: elementary-data/elementary
+    version: 0.16.2
   - package: calogica/dbt_date
     version: 0.10.1
-sha1_hash: 9c1df689f264329b54debd49f537d15bd0a96c14
+sha1_hash: a766bd8036475280e3f87f212c8a013d40b3f0f7
