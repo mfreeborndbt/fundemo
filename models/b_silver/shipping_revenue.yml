@@ -1,0 +1,15 @@
+version: 1
+models:
+- name: shipping_revenue
+  description: This model calculates the total revenue generated for each shipping
+    mode, providing insights into the revenue distribution across different shipping
+    methods.
+  columns:
+  - name: shipmode
+    description: The mode of shipping used for the orders.
+    data_tests:
+      - not_null
+  - name: total_revenue
+    description: The total revenue generated for each shipping mode.
+    data_tests:
+      - not_null
