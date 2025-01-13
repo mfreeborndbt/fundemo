@@ -1,0 +1,19 @@
+version: 2
+models:
+- name: ship_rev
+  description: This model calculates the total revenue generated for each shipping
+    mode and year, providing insights into shipping performance over time.
+  columns:
+  - name: shipmode
+    description: The mode of shipping used for the orders.
+    data_tests:
+      - not_null
+  - name: ship_year
+    description: The year in which the shipping occurred.
+    data_tests:
+      - not_null
+  - name: total_revenue
+    description: The total revenue generated from shipments for each shipping mode
+      and year, rounded to two decimal places.
+    data_tests:
+      - not_null
