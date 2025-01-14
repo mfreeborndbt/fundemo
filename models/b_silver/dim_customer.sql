@@ -5,6 +5,7 @@ customer as (
         custkey,
         name as customer_name,
         address,
+        nationkey,
         phone,
         acctbal,
         mktsegment
