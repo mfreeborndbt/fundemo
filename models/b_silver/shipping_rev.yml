@@ -1,0 +1,29 @@
+version: 2
+models:
+- name: shipping_rev
+  description: This model calculates the total revenue generated from shipping activities,
+    grouped by the year of shipment and the mode of shipping. It helps in analyzing
+    the revenue trends over different years and shipping methods.
+  columns:
+  - name: ship_year
+    description: The year in which the shipment took place.
+    data_tests:
+      - not_null
+  - name: shipmode
+    description: The mode of transportation used for shipping.
+    data_tests:
+      - not_null
+  - name: total_revenue
+    description: The total revenue generated from shipments for the given year and
+      shipping mode.
+    data_tests:
+      - not_null
+  - name: shipping_rev
+    description: This model calculates the total revenue generated from shipping activities, grouped by the year of shipment and the mode of shipping. It helps in analyzing the revenue trends over different years and shipping methods.
+    columns:
+      - name: ship_year
+        description: The year in which the shipment took place.
+      - name: shipmode
+        description: The mode of transportation used for shipping.
+      - name: total_revenue
+        description: The total revenue generated from shipments for the given year and shipping mode.
