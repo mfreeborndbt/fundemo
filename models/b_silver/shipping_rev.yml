@@ -1,0 +1,20 @@
+nullversion: 2
+models:
+- name: shipping_rev
+  description: This model calculates the total revenue generated from shipping orders,
+    grouped by shipping mode and shipping date. It provides insights into revenue
+    distribution across different shipping methods and time periods.
+  columns:
+  - name: ship_mode
+    description: The mode of shipping used for the order, such as standard or express.
+    data_tests:
+      - not_null
+  - name: ship_date
+    description: The date on which the order was shipped.
+    data_tests:
+      - not_null
+  - name: total_revenue
+    description: The total revenue generated from orders shipped on the specified
+      date and mode.
+    data_tests:
+      - not_null
