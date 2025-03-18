@@ -10,4 +10,3 @@ select
     end as customer_tier
 from {{ ref('fct_order_customer') }}
 group by custkey
-order by customer_spend asc

@@ -36,7 +36,7 @@ select
     c.acctbal,
     c.mktsegment,
     n.nation_name,
-    r.region_name,
+    r.region_name as regionname,
 from customer as c
 left join nation as n on c.nationkey = n.nationkey
 left join region as r on n.regionkey = r.regionkey
