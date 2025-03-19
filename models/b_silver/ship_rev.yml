@@ -1,0 +1,21 @@
+nullversion: 2
+models:
+- name: ship_rev
+  description: This model calculates the total revenue generated for each shipping
+    mode by year. It aggregates revenue data from the 'fct_order_customer' model,
+    grouping by shipping mode and year of shipment. This information can be used to
+    analyze revenue trends based on shipping methods over time.
+  columns:
+  - name: ship_mode
+    description: The mode of shipment used for the order, such as standard or express.
+    data_tests:
+      - not_null
+  - name: ship_year
+    description: The year in which the shipment was made.
+    data_tests:
+      - not_null
+  - name: total_revenue
+    description: The total revenue generated from shipments for the specified mode
+      and year.
+    data_tests:
+      - not_null
