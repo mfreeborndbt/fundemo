@@ -17,7 +17,7 @@ with
             quantity,
             extendedprice,
             discount,
-            tax,
+            tax as t,
             returnflag,
             linestatus,
             shipdate,
