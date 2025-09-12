@@ -1,20 +1,12 @@
-with revenue_by_shipmode_and_shipdate as (
+with revenue_by_ship as (
     select
-        year(ship_date) as ship_year,
-        ship_mode,
+        date_part('year', shipdate) as year,
+        shipmode,
         sum(revenue) as total_revenue
-    from
-        {{ ref('fct_order_customer') }}
-    group by
-        1, 2
+    from {{ ref('fct_order_lineitems') }}
+    group by 1, 2
 )
 
-select
-    ship_year,
-    ship_mode,
-    total_revenue
-from
-    revenue_by_shipmode_and_shipdate
-order by
-    ship_year,
-    ship_mode
+select *
+from revenue_by_ship
+order by year desc, shipmode
