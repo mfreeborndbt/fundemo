@@ -20,10 +20,5 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
-
-
-models:
-  elementary:
-    +schema: "elementary"
 flags:
   require_generic_test_arguments_property: true
