@@ -20,5 +20,13 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
+
+# Variables for dbt project evaluator - only evaluate bronze layer
+vars:
+  exclude_paths_from_project: 
+    - "models/b_silver/"
+    - "models/c_gold/" 
+    - "models/metrics/"
+
 flags:
   require_generic_test_arguments_property: true
