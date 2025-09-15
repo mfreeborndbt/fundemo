@@ -8,9 +8,6 @@ sources:
     tables:
       - name: customer
         description: "Customer table from TPCH_SF1 schema"
-        freshness:
-          warn_after: {count: 700, period: day}
-          error_after: {count: 1825, period: day}
         columns:
           - name: C_CUSTKEY
             description: "Primary key of the customer"
@@ -29,11 +26,12 @@ sources:
           - name: C_COMMENT
             description: "Comment related to the customer"
 
+        config:
+          freshness:
+            warn_after: {count: 700, period: day}
+            error_after: {count: 1825, period: day}
       - name: lineitem
         description: "Line item table from TPCH_SF1 schema"
-        freshness:
-          warn_after: {count: 700, period: day}
-          error_after: {count: 1825, period: day}
         columns:
           - name: L_ORDERKEY
             description: "Order key"
@@ -68,11 +66,12 @@ sources:
           - name: L_COMMENT
             description: "Comment related to the line item"
 
+        config:
+          freshness:
+            warn_after: {count: 700, period: day}
+            error_after: {count: 1825, period: day}
       - name: nation
         description: "Nation table from TPCH_SF1 schema"
-        freshness:
-          warn_after: {count: 700, period: day}
-          error_after: {count: 1825, period: day}
         columns:
           - name: N_NATIONKEY
             description: "Primary key of the nation"
@@ -83,11 +82,12 @@ sources:
           - name: N_COMMENT
             description: "Comment related to the nation"
 
+        config:
+          freshness:
+            warn_after: {count: 700, period: day}
+            error_after: {count: 1825, period: day}
       - name: orders
         description: "Orders table from TPCH_SF1 schema"
-        freshness:
-          warn_after: {count: 700, period: day}
-          error_after: {count: 1825, period: day}
         columns:
           - name: O_ORDERKEY
             description: "Primary key of the order"
@@ -108,11 +108,12 @@ sources:
           - name: O_COMMENT
             description: "Comment related to the order"
 
+        config:
+          freshness:
+            warn_after: {count: 700, period: day}
+            error_after: {count: 1825, period: day}
       - name: region
         description: "Region table from TPCH_SF1 schema"
-        freshness:
-          warn_after: {count: 700, period: day}
-          error_after: {count: 1825, period: day}
         columns:
           - name: R_REGIONKEY
             description: "Primary key of the region"
@@ -120,3 +121,7 @@ sources:
             description: "Name of the region"
           - name: R_COMMENT
             description: "Comment related to the region"
+        config:
+          freshness:
+            warn_after: {count: 700, period: day}
+            error_after: {count: 1825, period: day}

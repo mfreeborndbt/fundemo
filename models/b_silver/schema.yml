@@ -3,7 +3,7 @@ version: 2
 models:
   - name: dim_customer
     description: This model enriches customer details by pulling in relevant geographic data, providing a comprehensive view of customer information along with their associated nation and region.
-    
+
     columns:
       - name: custkey
         description: Unique identifier for the customer.
@@ -141,10 +141,12 @@ models:
     description: This model consolidates data from orders and lineitems to provide a comprehensive view of the details associated with each order and its line items.
     tests:
       - dbt_expectations.expect_table_aggregation_to_equal_other_table:
-          expression: sum(revenue)
-          compare_model: ref('fct_order_customer')
-          group_by: [orderkey]
-          enabled: false
+          config:
+            enabled: false
+          arguments:
+            expression: sum(revenue)
+            compare_model: ref('fct_order_customer')
+            group_by: [orderkey]
     columns:
       - name: orderkey
         description: A unique identifier for the order.

@@ -1,4 +1,4 @@
-models: 
+models:
   - name: stg_customer
     description: This model provides a staging layer for customer data, sourcing the data from the 'customer' table in the 'snowflake_sample_data' dataset. It offers essential customer details like identification, contact information, financial balance, market segment, and additional comments.
     columns:
@@ -31,9 +31,10 @@ models:
   - name: stg_lineitem
     tests:
       - dbt_expectations.expect_table_aggregation_to_equal_other_table:
-          expression: sum(revenue)
-          compare_model: ref('fct_order_lineitems')
-          group_by: [orderkey]
+          arguments:
+            expression: sum(revenue)
+            compare_model: ref('fct_order_lineitems')
+            group_by: [orderkey]
 
     description: This model stages the line item data from the snowflake_sample_data source for further transformations and analysis.
     columns:
@@ -118,7 +119,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['AIR', 'FOB', 'MAIL', 'RAIL', 'REG AIR', 'SHIP', 'TRUCK']
+              arguments:
+                values: ['AIR', 'FOB', 'MAIL', 'RAIL', 'REG AIR', 'SHIP', 'TRUCK']
 
       - name: comment
         description: Additional comments regarding the line item.
@@ -194,6 +196,7 @@ models:
         tests:
           - not_null
           - accepted_values:
+              arguments:
                 values: ['AFRICA', 'AMERICA', 'ASIA', 'EUROPE', 'MIDDLE EAST']
       - name: comment
         description: Comments or additional details about the region.
