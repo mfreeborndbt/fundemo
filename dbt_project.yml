@@ -21,22 +21,12 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
 
-# Variables for dbt project evaluator - bronze layer configuration
 vars:
   dbt_project_evaluator:
-    # Map bronze layer to staging conventions
     staging_folder_name: "a_bronze"
-    model_types: ['staging']  # Only evaluate staging/bronze layer
-    
-    # Focus on primary key and documentation tests only
+    model_types: ['staging']
     test_coverage_target: 100
     documentation_coverage_target: 100
-    
-    # Exclude silver, gold, and metrics layers 
-  exclude_paths_from_project: 
-    - "models/b_silver/"
-    - "models/c_gold/" 
-    - "models/metrics/"
 
 # Disable most evaluator checks - keep only primary key and documentation
 models:
