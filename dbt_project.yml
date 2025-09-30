@@ -24,7 +24,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   dbt_project_evaluator:
     staging_folder_name: "a_bronze"
-    model_types: ['staging']
+    intermediate_folder_name: "b_silver"
+    model_types: ['staging','intermediate']
     test_coverage_target: 100
     documentation_coverage_target: 100
 
@@ -47,8 +48,6 @@ models:
           +enabled: true   # Keep primary key tests
         fct_sources_without_freshness:
           +enabled: false  # Disable freshness checks
-      documentation:
-        +enabled: true     # Keep all documentation checks
 
 flags:
   require_generic_test_arguments_property: true
